@@ -6,7 +6,7 @@
   <link href="https://halfninety.top/atom.xml" rel="self"/>
   
   <link href="https://halfninety.top/"/>
-  <updated>2021-08-04T02:52:24.828Z</updated>
+  <updated>2021-08-30T06:14:49.336Z</updated>
   <id>https://halfninety.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://halfninety.top/2021/07/20/cve-2021-1675-fu-xian/"/>
     <id>https://halfninety.top/2021/07/20/cve-2021-1675-fu-xian/</id>
     <published>2021-07-20T09:51:07.000Z</published>
-    <updated>2021-08-04T02:52:24.828Z</updated>
+    <updated>2021-08-30T06:14:49.336Z</updated>
     
     
       
@@ -38,7 +38,7 @@
     
     <category term="CVE-2021" scheme="https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/"/>
     
-    <category term="域漏洞" scheme="https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/%E5%9F%9F%E6%BC%8F%E6%B4%9E/"/>
+    <category term="域渗透" scheme="https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
     
     
     <category term="内网" scheme="https://halfninety.top/tags/%E5%86%85%E7%BD%91/"/>
@@ -46,8 +46,6 @@
     <category term="域渗透" scheme="https://halfninety.top/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
     
     <category term="PrintNightmare" scheme="https://halfninety.top/tags/PrintNightmare/"/>
-    
-    <category term="域漏洞" scheme="https://halfninety.top/tags/%E5%9F%9F%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   

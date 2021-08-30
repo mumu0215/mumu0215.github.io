@@ -4,7 +4,7 @@
   <url>
     <loc>https://halfninety.top/2021/07/20/cve-2021-1675-fu-xian/</loc>
     
-    <lastmod>2021-08-04</lastmod>
+    <lastmod>2021-08-30</lastmod>
     
   </url>
   
@@ -53,7 +53,7 @@
 
   <url>
     <loc>https://halfninety.top/</loc>
-    <lastmod>2021-08-04</lastmod>
+    <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -61,42 +61,35 @@
   
   <url>
     <loc>https://halfninety.top/tags/%E5%86%85%E7%BD%91/</loc>
-    <lastmod>2021-08-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://halfninety.top/tags/vssadmin/</loc>
-    <lastmod>2021-08-04</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://halfninety.top/tags/mimikatz/</loc>
-    <lastmod>2021-08-04</lastmod>
+    <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/</loc>
-    <lastmod>2021-08-04</lastmod>
+    <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/PrintNightmare/</loc>
-    <lastmod>2021-08-04</lastmod>
+    <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://halfninety.top/tags/%E5%9F%9F%E6%BC%8F%E6%B4%9E/</loc>
-    <lastmod>2021-08-04</lastmod>
+    <loc>https://halfninety.top/tags/vssadmin/</loc>
+    <lastmod>2021-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://halfninety.top/tags/mimikatz/</loc>
+    <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -105,21 +98,21 @@
   
   <url>
     <loc>https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/</loc>
-    <lastmod>2021-08-04</lastmod>
+    <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/</loc>
-    <lastmod>2021-08-04</lastmod>
+    <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/%E5%9F%9F%E6%BC%8F%E6%B4%9E/</loc>
-    <lastmod>2021-08-04</lastmod>
+    <loc>https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/%E5%9F%9F%E6%B8%97%E9%80%8F/</loc>
+    <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
