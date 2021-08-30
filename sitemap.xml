@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://halfninety.top/2021/08/30/cve-2021-26855-proxylogon-fu-xian/</loc>
+    
+    <lastmod>2021-08-30</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://halfninety.top/2021/07/20/cve-2021-1675-fu-xian/</loc>
     
     <lastmod>2021-08-30</lastmod>
@@ -81,6 +88,27 @@
   </url>
   
   <url>
+    <loc>https://halfninety.top/tags/Exchange/</loc>
+    <lastmod>2021-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://halfninety.top/tags/SSRF/</loc>
+    <lastmod>2021-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://halfninety.top/tags/Proxylogon/</loc>
+    <lastmod>2021-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://halfninety.top/tags/vssadmin/</loc>
     <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
@@ -104,7 +132,21 @@
   </url>
   
   <url>
+    <loc>https://halfninety.top/categories/Microsoft-Exchange/</loc>
+    <lastmod>2021-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/</loc>
+    <lastmod>2021-08-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://halfninety.top/categories/Microsoft-Exchange/CVE-2021/</loc>
     <lastmod>2021-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

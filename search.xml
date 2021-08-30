@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>CVE-2021-26855 proxylogon复现</title>
+      <link href="/2021/08/30/cve-2021-26855-proxylogon-fu-xian/"/>
+      <url>/2021/08/30/cve-2021-26855-proxylogon-fu-xian/</url>
+      
+        <content type="html"><![CDATA[<h4 id="漏洞危害"><a href="#漏洞危害" class="headerlink" title="漏洞危害"></a>漏洞危害</h4><p>CVE-2021-26855又名proxylogon，是利用ssrf绕过权限验证，再结合同期Exchange的其他漏洞例如文件写入（<strong>CVE-2021-27065</strong>）等漏洞进行无权限rce</p><h4 id="受害版本"><a href="#受害版本" class="headerlink" title="受害版本"></a>受害版本</h4><p>Exchange 2013 Versions &lt; 15.00.1497.012</p><p>Exchange 2016 CU18 &lt; 15.01.2106.013</p><p>Exchange 2016 CU19 &lt; 15.01.2176.009</p><p>Exchange 2019 CU7 &lt; 15.02.0721.013</p><p>Exchange 2019 CU8 &lt; 15.02.0792.010</p><h4 id="具体过程如下："><a href="#具体过程如下：" class="headerlink" title="具体过程如下："></a>具体过程如下：</h4><p>1、 通过SSRF漏洞攻击,访问autodiscover.xml泄露LegacyDN信息<br>2、 在通过LegacyDN, 获取SID<br>3.、然后通过合法的SID,获取exchange的有效cookie<br>4.、最后通过有效的cookie,对OABVirtualDirectory对象进行恶意操作，写入一句话木马，达到控制目标的效果.</p><h4 id="漏洞复现环境"><a href="#漏洞复现环境" class="headerlink" title="漏洞复现环境"></a>漏洞复现环境</h4><p>win2012r2+exchange 2016cu16.iso</p><h4 id="漏洞复现"><a href="#漏洞复现" class="headerlink" title="漏洞复现"></a>漏洞复现</h4><h5 id="漏洞探测"><a href="#漏洞探测" class="headerlink" title="漏洞探测"></a>漏洞探测</h5><p>漏洞探测包：</p><p><img src="https://cdn.jsdelivr.net/gh/mumu0215/CVE_repaly@1.0/CVE-2021/pic/CVE2021-26855-1.png"></p><p>ssrf原因为请求包中的cookie中X-BEResource，存在漏洞主机会有<strong>X-FEServer和X-CalculatedBETarget</strong>两个cookie。其中需要X-FEServer的信息进行进一步利用</p><h5 id="读取-autodiscover-xml"><a href="#读取-autodiscover-xml" class="headerlink" title="读取 autodiscover.xml"></a>读取 autodiscover.xml</h5><p>Autodiscover(自动发现)是自Exchange Server 2007开始推出的一项自动服务，用于自动配置用户在Outlook中邮箱的相关设置，简化用户登陆使用邮箱的流程。如果用户账户是域账户且当前位于域环境中，通过自动发现功能用户无需输入任何凭证信息即可登陆邮箱。</p><p>读取对应账户的legacyDN</p><p><img src="https://cdn.jsdelivr.net/gh/mumu0215/CVE_repaly@1.0/CVE-2021/pic/CVE2021-26855-2.png"></p><h5 id="利用脚本"><a href="#利用脚本" class="headerlink" title="利用脚本"></a>利用脚本</h5><p><a href="https://github.com/mai-lang-chai/Middleware-Vulnerability-detection/tree/master/Exchange/CVE-2021-26855%20Exchange%20RCE">https://github.com/mai-lang-chai/Middleware-Vulnerability-detection/tree/master/Exchange/CVE-2021-26855%20Exchange%20RCE</a></p><p><img src="https://cdn.jsdelivr.net/gh/mumu0215/CVE_repaly@1.0/CVE-2021/pic/CVE2021-26855-3.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Microsoft Exchange </category>
+          
+          <category> CVE-2021 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Exchange </tag>
+            
+            <tag> SSRF </tag>
+            
+            <tag> Proxylogon </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CVE-2021-1675复现</title>
       <link href="/2021/07/20/cve-2021-1675-fu-xian/"/>
       <url>/2021/07/20/cve-2021-1675-fu-xian/</url>

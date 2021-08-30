@@ -6,7 +6,7 @@
   <link href="https://halfninety.top/atom.xml" rel="self"/>
   
   <link href="https://halfninety.top/"/>
-  <updated>2021-08-30T07:41:48.488Z</updated>
+  <updated>2021-08-30T08:18:00.488Z</updated>
   <id>https://halfninety.top/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CVE-2021-26855 proxylogon复现</title>
+    <link href="https://halfninety.top/2021/08/30/cve-2021-26855-proxylogon-fu-xian/"/>
+    <id>https://halfninety.top/2021/08/30/cve-2021-26855-proxylogon-fu-xian/</id>
+    <published>2021-08-30T08:04:54.000Z</published>
+    <updated>2021-08-30T08:18:00.488Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;漏洞危害&quot;&gt;&lt;a href=&quot;#漏洞危害&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Microsoft Exchange" scheme="https://halfninety.top/categories/Microsoft-Exchange/"/>
+    
+    <category term="CVE-2021" scheme="https://halfninety.top/categories/Microsoft-Exchange/CVE-2021/"/>
+    
+    
+    <category term="Exchange" scheme="https://halfninety.top/tags/Exchange/"/>
+    
+    <category term="SSRF" scheme="https://halfninety.top/tags/SSRF/"/>
+    
+    <category term="Proxylogon" scheme="https://halfninety.top/tags/Proxylogon/"/>
+    
+  </entry>
   
   <entry>
     <title>CVE-2021-1675复现</title>
