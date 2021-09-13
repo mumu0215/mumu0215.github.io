@@ -6,7 +6,7 @@
   <link href="https://halfninety.top/atom.xml" rel="self"/>
   
   <link href="https://halfninety.top/"/>
-  <updated>2021-09-13T02:17:12.636Z</updated>
+  <updated>2021-09-13T02:27:35.118Z</updated>
   <id>https://halfninety.top/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://halfninety.top/2021/08/30/cve-2021-26855-proxylogon-fu-xian/"/>
     <id>https://halfninety.top/2021/08/30/cve-2021-26855-proxylogon-fu-xian/</id>
     <published>2021-08-30T08:04:54.000Z</published>
-    <updated>2021-09-13T02:17:12.636Z</updated>
+    <updated>2021-09-13T02:27:35.118Z</updated>
     
     
       
@@ -36,7 +36,7 @@
     
     <category term="Microsoft Exchange" scheme="https://halfninety.top/categories/Microsoft-Exchange/"/>
     
-    <category term="CVE-2021" scheme="https://halfninety.top/categories/Microsoft-Exchange/CVE-2021/"/>
+    <category term="CVE-2021" scheme="https://halfninety.top/categories/CVE-2021/"/>
     
     
     <category term="Exchange" scheme="https://halfninety.top/tags/Exchange/"/>
@@ -52,7 +52,7 @@
     <link href="https://halfninety.top/2021/07/20/cve-2021-1675-fu-xian/"/>
     <id>https://halfninety.top/2021/07/20/cve-2021-1675-fu-xian/</id>
     <published>2021-07-20T09:51:07.000Z</published>
-    <updated>2021-09-13T02:17:08.877Z</updated>
+    <updated>2021-09-13T02:27:31.294Z</updated>
     
     
       
@@ -67,9 +67,9 @@
     
     <category term="windows内网" scheme="https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/"/>
     
-    <category term="CVE-2021" scheme="https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/"/>
+    <category term="CVE-2021" scheme="https://halfninety.top/categories/CVE-2021/"/>
     
-    <category term="域渗透" scheme="https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+    <category term="域渗透" scheme="https://halfninety.top/categories/%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
     
     
     <category term="内网" scheme="https://halfninety.top/tags/%E5%86%85%E7%BD%91/"/>

@@ -16,6 +16,13 @@
   </url>
   
   <url>
+    <loc>https://halfninety.top/categories/index.html</loc>
+    
+    <lastmod>2021-09-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://halfninety.top/2021/07/01/nei-wang-chu-tan-windows-hash-ti-qu/</loc>
     
     <lastmod>2021-07-02</lastmod>
@@ -45,13 +52,6 @@
   
   <url>
     <loc>https://halfninety.top/about/index.html</loc>
-    
-    <lastmod>2021-07-01</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://halfninety.top/categories/index.html</loc>
     
     <lastmod>2021-07-01</lastmod>
     
@@ -139,21 +139,14 @@
   </url>
   
   <url>
-    <loc>https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/</loc>
+    <loc>https://halfninety.top/categories/CVE-2021/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://halfninety.top/categories/Microsoft-Exchange/CVE-2021/</loc>
-    <lastmod>2021-09-13</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/CVE-2021/%E5%9F%9F%E6%B8%97%E9%80%8F/</loc>
+    <loc>https://halfninety.top/categories/%E5%9F%9F%E6%B8%97%E9%80%8F/</loc>
     <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
