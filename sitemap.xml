@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://halfninety.top/2021/12/17/cve-2021-42287-cve-2021-42278-yu-quan-xian-ti-sheng/</loc>
+    
+    <lastmod>2021-12-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://halfninety.top/2021/08/30/cve-2021-26855-proxylogon-fu-xian/</loc>
     
     <lastmod>2021-09-26</lastmod>
@@ -60,7 +67,7 @@
 
   <url>
     <loc>https://halfninety.top/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -68,56 +75,70 @@
   
   <url>
     <loc>https://halfninety.top/tags/%E5%86%85%E7%BD%91/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/PrintNightmare/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/Exchange/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/SSRF/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/Proxylogon/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://halfninety.top/tags/%E6%8F%90%E6%9D%83/</loc>
+    <lastmod>2021-12-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://halfninety.top/tags/Kerberos%E5%8D%8F%E8%AE%AE/</loc>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/vssadmin/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/tags/mimikatz/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -126,28 +147,28 @@
   
   <url>
     <loc>https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/categories/Microsoft-Exchange/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/categories/CVE-2021/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://halfninety.top/categories/%E5%9F%9F%E6%B8%97%E9%80%8F/</loc>
-    <lastmod>2021-09-26</lastmod>
+    <lastmod>2021-12-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

@@ -6,7 +6,7 @@
   <link href="https://halfninety.top/atom.xml" rel="self"/>
   
   <link href="https://halfninety.top/"/>
-  <updated>2021-09-26T07:35:31.076Z</updated>
+  <updated>2021-12-17T01:38:28.595Z</updated>
   <id>https://halfninety.top/</id>
   
   <author>
@@ -15,6 +15,43 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CVE-2021-42287/CVE-2021-42278 域权限提升</title>
+    <link href="https://halfninety.top/2021/12/17/cve-2021-42287-cve-2021-42278-yu-quan-xian-ti-sheng/"/>
+    <id>https://halfninety.top/2021/12/17/cve-2021-42287-cve-2021-42278-yu-quan-xian-ti-sheng/</id>
+    <published>2021-12-17T01:13:43.000Z</published>
+    <updated>2021-12-17T01:38:28.595Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;影响版本&quot;&gt;&lt;a href=&quot;#影响版本&quot; class=&quot;headerlink&quot; title=&quot;影响版本&quot;&gt;&lt;/a&gt;影响版本&lt;/h2&gt;&lt;p&gt;Windows Server 2022&lt;/p&gt;
+&lt;p&gt;Windows Server 2019&lt;/p&gt;
+&lt;p&gt;Windows</summary>
+        
+      
+    
+    
+    
+    <category term="windows内网" scheme="https://halfninety.top/categories/windows%E5%86%85%E7%BD%91/"/>
+    
+    <category term="CVE-2021" scheme="https://halfninety.top/categories/CVE-2021/"/>
+    
+    <category term="域渗透" scheme="https://halfninety.top/categories/%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+    
+    
+    <category term="内网" scheme="https://halfninety.top/tags/%E5%86%85%E7%BD%91/"/>
+    
+    <category term="域渗透" scheme="https://halfninety.top/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/"/>
+    
+    <category term="提权" scheme="https://halfninety.top/tags/%E6%8F%90%E6%9D%83/"/>
+    
+    <category term="Kerberos协议" scheme="https://halfninety.top/tags/Kerberos%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
   
   <entry>
     <title>CVE-2021-26855 proxylogon复现</title>
