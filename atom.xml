@@ -6,7 +6,7 @@
   <link href="https://half90.top/atom.xml" rel="self"/>
   
   <link href="https://half90.top/"/>
-  <updated>2022-07-13T03:35:55.228Z</updated>
+  <updated>2022-07-24T23:28:15.994Z</updated>
   <id>https://half90.top/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HackTheBox-OpenSource</title>
+    <link href="https://half90.top/2022/07/25/hackthebox-opensource/"/>
+    <id>https://half90.top/2022/07/25/hackthebox-opensource/</id>
+    <published>2022-07-24T23:05:19.000Z</published>
+    <updated>2022-07-24T23:28:15.994Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;HackTheBox-OpenSource&quot;&gt;&lt;a href=&quot;#HackTheBox-OpenSource&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Web渗透学习" scheme="https://half90.top/categories/Web%E6%B8%97%E9%80%8F%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="Web渗透" scheme="https://half90.top/tags/Web%E6%B8%97%E9%80%8F/"/>
+    
+    <category term="HackTheBox" scheme="https://half90.top/tags/HackTheBox/"/>
+    
+  </entry>
   
   <entry>
     <title>GraphQL攻击面总结</title>
