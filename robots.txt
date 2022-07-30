@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://half90.top/sitemap.xml
+Sitemap: https://half90.top/baidusitemap.xml
