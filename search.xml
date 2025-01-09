@@ -102,9 +102,9 @@
       
       <categories>
           
-          <category> Microsoft Exchange </category>
-          
           <category> CVE-2021 </category>
+          
+          <category> Microsoft Exchange </category>
           
       </categories>
       
