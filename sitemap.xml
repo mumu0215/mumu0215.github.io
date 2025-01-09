@@ -131,20 +131,6 @@
   </url>
   
   <url>
-    <loc>https://half90.top/tags/%E6%8F%90%E6%9D%83/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://half90.top/tags/Kerberos%E5%8D%8F%E8%AE%AE/</loc>
-    <lastmod>2025-01-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://half90.top/tags/Exchange/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -160,6 +146,20 @@
   
   <url>
     <loc>https://half90.top/tags/Proxylogon/</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://half90.top/tags/%E6%8F%90%E6%9D%83/</loc>
+    <lastmod>2025-01-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://half90.top/tags/Kerberos%E5%8D%8F%E8%AE%AE/</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
